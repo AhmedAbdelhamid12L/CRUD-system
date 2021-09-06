@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>CRUD system</title>
+  </head>
+  <body>
+    <div class="container w-50 shadow mt-5 py-5 px-3">
+      <h1 class="text-center">CRUD system</h1>
+      <label for="productName" class="mb-1">productName:</label>
+      <input type="text" class="form-control mb-1" id="productName" />
+      <label for="productCategory" class="mb-1">productCategory:</label>
+      <input type="text" class="form-control mb-1" id="productCategory" />
+      <label for="productPrice" class="mb-1">productPrice:</label>
+      <input type="text" class="form-control mb-1" id="productPrice" />
+      <label for="productDescription" class="mb-1">productDescription:</label>
+      <textarea
+        type="text"
+        class="form-control mb-4"
+        id="productDescription"
+      ></textarea>
+      <button onclick="addProduct() , clearProduct()" class="btn btn-info">
+        Add product
+      </button>
+      <button class="btn btn-info" onclick="clearProduct()">Clear</button>
+    </div>
+    <input
+      type="text"
+      id="searchInput"
+      class="form-control w-50 m-auto my-5"
+      placeholder="Search for the name of the product"
+      onkeyup="searchProduct()"
+    />
+    <table class="table table-success table-striped container text-center">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="tBody"></tbody>
+    </table>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
