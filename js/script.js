@@ -32,6 +32,7 @@ function addProduct() {
 
 
   displayProduct();
+  clearProduct();
 }
 
 displayProduct();
@@ -52,8 +53,8 @@ function displayProduct() {
     <td>${productList[i].categoryValue}</td>
     <td>${productList[i].priceValue}</td>
     <td>${productList[i].descriptionValue}</td>
-    <td><button onclick="updateProduct()" class="btn btn-outline-success">Update</button></td>
-    <td><button onclick="deleteProduct()" class="btn btn-outline-danger">Delete</button></td>
+    <td><button onclick="updateProduct(${i})" class="btn btn-outline-success">Update</button></td>
+    <td><button onclick="deleteProduct(${i})" class="btn btn-outline-danger">Delete</button></td>
   </tr>`
   };
   tBody.innerHTML = str;
@@ -69,8 +70,8 @@ function searchProduct() {
       <td>${productList[i].categoryValue}</td>
       <td>${productList[i].priceValue}</td>
       <td>${productList[i].descriptionValue}</td>
-      <td><button class="btn btn-outline-warning">Update</button></td>
-      <td><button class="btn btn-outline-danger">Delete</button></td>
+      <td><button onclick="updateProduct(${i})" class="btn btn-outline-success">Update</button></td>
+      <td><button onclick="deleteProduct(${i})" class="btn btn-outline-danger">Delete</button></td>
       </tr>`
     };
     
@@ -78,11 +79,51 @@ function searchProduct() {
   }
 }
 
-function updateProduct() {
-  
+var newIndexUpdate ;
+
+function updateProduct(index) {
+  nameInput.value = productList[index].nameValue;
+  categoryInput.value = productList[index].categoryValue;
+  priceInput.value = productList[index].priceValue;
+  descriptionInput.value = productList[index].descriptionValue;
+
+  window.scrollTo(0,0);
+
+  document.getElementById("btnMain").setAttribute( "onClick", "afterUpdateProduct()");
+  document.getElementById("btnMain").innerHTML = "Update";
+
+  var indexUpdate = index ;
+  newIndexUpdate = indexUpdate ;
+}
+
+function afterUpdateProduct(){
+  var newProductValue = {
+    nameValue: nameInput.value ,
+    categoryValue: categoryInput.value ,
+    priceValue: Number( priceInput.value ) ,
+    descriptionValue: descriptionInput.value ,
+  }
+
+  productList.splice(newIndexUpdate,1 ,newProductValue);
+
+  var strList = JSON.stringify(productList);
+  localStorage.setItem('productData', strList);
+
+  displayProduct();
+
+  document.getElementById("btnMain").setAttribute( "onClick", "addProduct()");
+  document.getElementById("btnMain").innerHTML="Add Product";
+  clearProduct();
 }
 
 
-function deleteProduct() {
-  
+function deleteProduct(index) {
+  productList.splice(index,1);
+
+  var strList = JSON.stringify(productList);
+
+  localStorage.setItem( "productData" , strList);
+
+  displayProduct();
+
 }

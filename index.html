@@ -10,22 +10,22 @@
     <title>CRUD system</title>
   </head>
   <body>
-    <div class="container w-50 shadow mt-5 py-5 px-3">
+    <div class="container w-75 shadow mt-5 py-5 px-3">
       <h1 class="text-center">CRUD system</h1>
-      <label for="productName" class="mb-1">productName:</label>
+      <label for="productName" class="mb-1">Product Name:</label>
       <input type="text" class="form-control mb-1" id="productName" />
-      <label for="productCategory" class="mb-1">productCategory:</label>
+      <label for="productCategory" class="mb-1">Product Category:</label>
       <input type="text" class="form-control mb-1" id="productCategory" />
-      <label for="productPrice" class="mb-1">productPrice:</label>
+      <label for="productPrice" class="mb-1">Product Price:</label>
       <input type="text" class="form-control mb-1" id="productPrice" />
-      <label for="productDescription" class="mb-1">productDescription:</label>
+      <label for="productDescription" class="mb-1">Product Description:</label>
       <textarea
         type="text"
         class="form-control mb-4"
         id="productDescription"
       ></textarea>
-      <button onclick="addProduct() , clearProduct()" class="btn btn-info">
-        Add product
+      <button id="btnMain" onclick="addProduct()" class="btn btn-info">
+        Add Product
       </button>
       <button class="btn btn-info" onclick="clearProduct()">Clear</button>
     </div>
